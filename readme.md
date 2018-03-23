@@ -25,4 +25,6 @@ curl -G http://localhost:3001/predict --data-urlencode "text=classify me"
 ```
 
 ## Performance notes
-Currently utilizes just one fasttext worker! support for multiple workers is not built-in yet. See below the VisaulVM output of the performance and throughput tests as of the current commit ―  ![here](performance-snapshot.jpg)
+Currently utilizes just one fasttext worker! support for multiple workers is not built-in yet. See below the VisaulVM output of the performance and throughput tests (included in the `test` directory) as of the current commit on a 12-core i7 ―
+
+ ![here](performance-snapshot.jpg)
