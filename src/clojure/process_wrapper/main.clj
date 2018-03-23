@@ -1,6 +1,11 @@
 (ns process-wrapper.main
   (:require
-     [process-wrapper.server :refer :all]))
+     [clojure.data.json :as json]
+     [process-wrapper.server :refer :all])
+  (:gen-class))
 
-(defn -main []
-  (server))
+(defn -main [& args]
+  (println "server starting...")
+  (server
+    (or (first args) 3001)
+    json/write-str))

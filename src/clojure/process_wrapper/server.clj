@@ -1,35 +1,39 @@
 (ns process-wrapper.server
   (:require
      [yada.yada :refer [listener resource as-resource]]
+     [clojure.data.json :as json]
+     [process-wrapper.process-worker :refer :all]
      [process-wrapper.core :refer :all]))
 
-(defn server []
-  (println "server starting")
+(defn server [port format-converter]
 
   (let
-    [worker (attach ["fasttext/fastText/fasttext" "predict-prob" "fasttext/classifier.bin" "-" "5"])
+    [worker (attach ["fasttext/fastText/fasttext" "predict-prob" "fasttext/classifier.bin" "-" "1000"])
      classify
        (fn [ctx]
-          (let [text (str (get-in ctx [:parameters :query :text]) "\n")]
-             (println "before")
-             (get-prediction worker text)))]
+          (let [text (get-in ctx [:parameters :query :text])]
+             #_(println "predicting for" text)
+             (get-prediction worker (str text "\n")  format-converter)))]
 
     (def yada-server
       (listener
          ["/"
+
            [["status"
                (resource
                   {:produces "text/plain"
-                   :response "Server is up"})]
+                    :response "Server is up"})]
+
             ["predict"
                (resource
                  {:methods
                     {:get
                       {:parameters {:query {:text String}}
-                       :produces "text/plain"
-                       :response classify}}})]
+                        :produces "application/json"
+                        :response classify}}})]
             [true (as-resource nil)]]]
 
-       {:port 3000})))
+       {:port port})))
 
-  @(promise)) ;; block forever to keep the yada server alive
+  (println "listening on port" port)
+  (future @(promise))) ;; block forever to keep the yada server alive

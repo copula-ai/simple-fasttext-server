@@ -113,6 +113,7 @@
         (let
           [foo 1
            bar (* foo 2)]
+          #_(println (to-map foo bar))
           (to-map foo bar))
         {:foo 1 :bar 2})))
 

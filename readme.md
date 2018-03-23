@@ -8,14 +8,18 @@ Work In Progress.
 1. install [leiningen](https://leiningen.org/)
 2. clone this repo
 3. change directory to the included directory `fasttext`.
-4. place your trained fasttext model here as well (should be named `classifier.bin`).
-5. git clone [fasttext](https://github.com/facebookresearch/fastText) here.
-4. `lein run` (takes few seconds to start up)
+4. place your trained fasttext model here ― it should be named `classifier.bin`.
+5. git clone https://github.com/facebookresearch/fastText.
 
 ## Usage
 
+to start the server:
+
 ```
-curl 'http://localhost:3000/predict?text=classify%20me'
+lein run [port]
 ```
 
-Or your whatever http get API.
+to get a response make an http `get` with the single query parameter `text`. E.g. with curl this would be:
+```
+curl -G http://localhost:3001/predict --data-urlencode "text=classify me"
+```
