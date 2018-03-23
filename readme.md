@@ -19,7 +19,7 @@ to start the server:
 lein run [port]
 ```
 
-to get a response make, an a `get` request with the single query parameter `text`. E.g. with curl this would look like ―
+to get a response, make an a `get` request with the single query parameter `text`. E.g. with curl this would look like ―
 ```
 curl -G http://localhost:3001/predict --data-urlencode "text=classify me"
 ```
