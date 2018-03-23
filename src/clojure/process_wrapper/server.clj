@@ -11,6 +11,7 @@
      classify
        (fn [ctx]
           (let [text (str (get-in ctx [:parameters :query :text]) "\n")]
+             (println "before")
              (get-prediction worker text)))]
 
     (def yada-server

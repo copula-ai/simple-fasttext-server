@@ -3,5 +3,5 @@
             [process-wrapper.server :refer :all]))
 
 
-(deftest end-to-end
+#_(deftest end-to-end
   (server))

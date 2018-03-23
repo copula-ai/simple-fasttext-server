@@ -19,10 +19,7 @@
 
      <Space> = <' '>
 
-     <Score> = Score-Fraction | Score-Fraction-Scientific-Notation | '0' | '1'
-
-     <Score-Fraction> = #'0\\.[0-9]+'
-     <Score-Fraction-Scientific-Notation> = #'[0-9]+\\.[0-9]+e-[0-9]+'"))
+     <Score> = #'[^\\s]+'"))
 
 
 (with-test
@@ -49,6 +46,6 @@
   (is (=
      (fasttext-output-parse "__label__A 0.999998")
      [:Labels
-        [:Scored-Label "A" "0.999998"]])))
+        [:Scored-Label "A" "0.999998"]]))
 
-
+  (fasttext-output-parse "__label__mistake_in_transfer_execution 1.00001 __label__transfer_request 1.00974e-05 __label__misunderstanding 1.00121e-05 __label__request_for_contact 1.00001e-05 __label__transfer_difficulty 1e-05"))

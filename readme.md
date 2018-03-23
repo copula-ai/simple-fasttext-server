@@ -8,8 +8,8 @@ Work In Progress.
 1. install [leiningen](https://leiningen.org/)
 2. clone this repo
 3. change directory to the included directory `fasttext`.
-4. git clone [fasttext](https://github.com/facebookresearch/fastText) here.
-3. place your trained fasttext model here as well (should be named `classifier.bin`).
+4. place your trained fasttext model here as well (should be named `classifier.bin`).
+5. git clone [fasttext](https://github.com/facebookresearch/fastText) here.
 4. `lein run` (takes few seconds to start up)
 
 ## Usage

@@ -17,7 +17,7 @@
 
   (let
      [conch-object (apply sh/proc command-and-args) ; this is the map returned by `conch/sh`, consisting of the keys: :err :in :out :process
-      process-object (:process conch-object)        ; the java process object
+      process-object (:process conch-object)                ; the java process object
       new-worker
         {process-object
           {:shell-object conch-object
@@ -70,6 +70,3 @@
          (update-in process-list [(key (first worker)) :status] (constantly :idle))))
 
     parse))
-
-
-
