@@ -9,6 +9,7 @@ You send an http `get` with some text, and get label probabilities for it.
 3. change directory to the included directory `fasttext`.
 4. place your trained fasttext model here ― it should be named `classifier.bin`.
 5. git clone https://github.com/facebookresearch/fastText.
+6. validate the installation by running `lein test`
 
 ## Usage
 
