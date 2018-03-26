@@ -6,7 +6,7 @@
      [process-wrapper.core :refer :all]))
 
 (defn server [port format-converter]
-  " http only for now. https support entails a bit / much more work ― 
+  " http only for now. https support entails a bit / much more work ―
     https://github.com/SevereOverfl0w/aleph-yada-ssl/blob/master/src/jkdjka/yada.clj "
   (let
     [worker (attach ["fasttext/fastText/fasttext" "predict-prob" "fasttext/classifier.bin" "-" "1000"])
@@ -31,7 +31,8 @@
                     {:get
                       {:parameters {:query {:text String}}
                         :produces "application/json"
-                        :response classify}}})]
+                        :response classify}}
+                   :access-control {:allow-origin "*"}})]
             [true (as-resource nil)]]]
 
        {:port port})))
